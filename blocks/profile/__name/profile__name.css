@@ -6,7 +6,6 @@
     margin: 0 0 -10px;
     justify-self: flex-start;
     align-self: flex-end;
-    max-width: 294px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
