@@ -1,0 +1,25 @@
+.profile {
+    max-width: 880px;
+    display: grid;
+    grid-template-columns: minmax(140px, 150px) minmax(304px, 313px) minmax(40px, 270px) 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: flex-start;
+    align-content: center;
+    grid-template-areas:
+        "avatar name edit-btn add-button"
+        "avatar subtitle subtitle add-button";
+}
+
+@media screen and (max-width: 917px) {
+    .profile {
+        box-sizing: border-box;
+        grid-template-columns: 1fr 208px 1fr;
+        grid-template-rows: 144px 40px 25px 78px;
+        grid-template-areas:
+            ". avatar ."
+            ". name edit-btn"
+            ". subtitle ."
+            "add-button add-button add-button";
+
+    }
+}

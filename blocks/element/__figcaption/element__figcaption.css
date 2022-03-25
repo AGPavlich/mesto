@@ -1,0 +1,9 @@
+.element__figcaption {
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 0;
+    grid-template-areas: "title like-btn";
+    max-width: 282px;
+    margin-left: 21px;
+    margin-right: 20px;
+}
