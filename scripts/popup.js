@@ -9,8 +9,8 @@ let saveBtn = formElement.querySelector('.popup__save');
 let profileName = document.querySelector('.profile__name')
 let profileJob = document.querySelector('.profile__subtitle');
 
-let nameInput = document.querySelector('.popup__input_name');
-let jobInput = document.querySelector('.popup__input_description');
+let nameInput = document.querySelector('.popup__input-name');
+let jobInput = document.querySelector('.popup__input-description');
 
 nameInput.value = profileName.textContent;
 jobInput.value = profileJob.textContent;
