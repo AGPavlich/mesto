@@ -1,4 +1,4 @@
-.popup__input-description {
+.popup__input {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     box-sizing: border-box;
@@ -6,7 +6,6 @@
     font-size: 14px;
     line-height: 1.2px;
     font-weight: 400;
-    height: 60px;
     padding: 25px 0 0;
     width: 100%;
     outline: none;

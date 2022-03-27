@@ -1,7 +1,7 @@
 .popup {
     display: none;
     position: fixed;
-    top: -14px;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
@@ -13,7 +13,6 @@
 
 @media screen and (max-width: 630px) {
     .popup {
-        top: -27px;
         max-width: 282px;
         margin: 0 auto;
 

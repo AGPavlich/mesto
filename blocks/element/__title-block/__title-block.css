@@ -1,4 +1,4 @@
-.element__figcaption {
+.element__title-block {
     display: grid;
     grid-template-rows: 1fr;
     gap: 0;

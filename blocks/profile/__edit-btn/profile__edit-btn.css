@@ -1,6 +1,6 @@
 .profile__edit-btn {
     grid-area: edit-btn;
-    background-image: url(../../../images/profile__edit-button.png);
+    background-image: url(../../../images/profile__edit-button.svg);
     background-color: #000;
     width: 24px;
     height: 24px;
@@ -23,5 +23,6 @@
         width: 18px;
         height: 18px;
         align-self: center;
+        background-size: 7.5px;
     }
 }
