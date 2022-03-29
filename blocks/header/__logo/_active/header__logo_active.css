@@ -1,0 +1,4 @@
+.header__logo_active:hover {
+    opacity: .8;
+    transition: .4s;
+}

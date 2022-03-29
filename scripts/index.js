@@ -6,8 +6,8 @@ let saveBtn = formElement.querySelector('.popup__save');
 let profileName = document.querySelector('.profile__name')
 let profileJob = document.querySelector('.profile__subtitle');
 let formProfile = formElement.querySelector('.popup__form');
-let nameInput = document.querySelector('input[name="name"]');
-let jobInput = document.querySelector('input[name="description"]');
+let nameInput = document.querySelector('.popup__input_type_name');
+let jobInput = document.querySelector('.popup__input_type_description');
 
 function opPopup() {
     formElement.classList.add('popup_opened');

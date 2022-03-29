@@ -10,11 +10,3 @@
     justify-content: center;
     height: 100%;
 }
-
-@media screen and (max-width: 630px) {
-    .popup {
-        max-width: 282px;
-        margin: 0 auto;
-
-    }
-}
