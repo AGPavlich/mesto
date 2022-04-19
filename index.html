@@ -20,72 +20,64 @@
         <section class="profile content__section">
             <img src="./images/Avatar.jpg" alt="Аватар профиля" class="profile__avatar">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-btn" type="button" aria-label="Кнопка редактирования профиля"></button>
+            <button class="profile__edit-button" type="button" aria-label="Кнопка редактирования профиля"></button>
             <p class="profile__subtitle">Исследователь океана</p>
-            <button class="profile__add-btn" type="button" aria-label="Кнопка добавления фото"></button>
+            <button class="profile__add-button" type="button" aria-label="Кнопка добавления фото"></button>
         </section>
 
-        <section class="elements content__section">
-            <article class="element">
-                <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Сентинский храм" class="element__img">
-                <div class="element__title-block">
-                    <h2 class="element__title">Карачаевск</h2>
-                    <button class="element__like" type="button" aria-label="Кнопка для лайка"></button>
-                </div>
-            </article>
-            <article class="element">
-                <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Вид на Эльбрус" class="element__img">
-                <div class="element__title-block">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class="element__like" type="button" aria-label="Кнопка для лайка"></button>
-                </div>
-            </article>
-            <article class="element">
-                <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Белалакая" class="element__img">
-                <div class="element__title-block">
-                    <h2 class="element__title">Домбай</h2>
-                    <button class="element__like" type="button" aria-label="Кнопка для лайка"></button>
-                </div>
-            </article>
-            <article class="element">
-                <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Вид на Эльбрус" class="element__img">
-                <div class="element__title-block">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class="element__like" type="button" aria-label="Кнопка для лайка"></button>
-                </div>
-            </article>
-            <article class="element">
-                <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Белалакая" class="element__img">
-                <div class="element__title-block">
-                    <h2 class="element__title">Домбай</h2>
-                    <button class="element__like" type="button" aria-label="Кнопка для лайка"></button>
-                </div>
-            </article>
-            <article class="element">
-                <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Сентинский храм" class="element__img">
-                <div class="element__title-block">
-                    <h2 class="element__title">Карачаево-Черкесия</h2>
-                    <button class="element__like" type="submit" aria-label="Кнопка для лайка"></button>
-                </div>
-            </article>
-
+        <section class="elements content__section elements_type_list">
+            <template class="element-template">
+                <article class="element">
+                    <img src="" alt="" class="element__img">
+                    <button class="element__remove" type="button"></button>
+                    <div class="element__title-block">
+                        <h2 class="element__title"></h2>
+                        <button class="element__like" type="submit" aria-label="Кнопка для лайка"></button>
+                    </div>
+                </article>
+            </template>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-
-    <div class="popup">
-        <div class="popup__container">
-            <button class="popup__close" type="button" aria-label="Кнопка закрытия окна редактирования"></button>
-            <form class="popup__form" name="form_profile">
+    <!-- Профиль -->
+    <div class="popup popup_type_edit-profile">
+        <div class="popup__container popup__container_edit-profile">
+            <button class="popup__close-button popup__close-button_edit-profile" type="button"
+                aria-label="Кнопка закрытия окна редактирования"></button>
+            <form class="popup__form popup__form_type_edit-profile" name="profile">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <input class="popup__input popup__input_type_name" name="name" type="text" placeholder="Имя">
                 <input class="popup__input popup__input_type_description" name="description" type="text"
                     placeholder="О себе">
-
-                <button class="popup__save" type="submit" aria-label="Кнопка Сохранить">Сохранить</button>
+                <button class="popup__button popup__button_save" type="submit"
+                    aria-label="Кнопка Сохранить">Сохранить</button>
             </form>
+        </div>
+    </div>
+    <!-- Карточки -->
+    <div class="popup popup_type_add-card">
+        <div class="popup__container popup__container_add-card">
+            <button class="popup__close-button popup__close-button_add-card" type="button"
+                aria-label="Кнопка закрытия"></button>
+            <form class="popup__form popup__form_type_add-card" name="card">
+                <h2 class="popup__title">Новое место</h2>
+                <input class="popup__input popup__input_type_title" name="title" type="text" placeholder="Название">
+                <input class="popup__input popup__input_type_link" name="link" type="text"
+                    placeholder="Ссылка на картинку">
+                <button class="popup__button popup__button_create" type="submit"
+                    aria-label="Кнопка создать">Создать</button>
+            </form>
+        </div>
+    </div>
+    <!-- Фото preview -->
+    <div class="popup popup_images popup_type_preview">
+        <div class="popup__container popup__container_preview">
+            <button class="popup__close-button popup__close-button_preview" type="button"
+                aria-label="Кнопка закрытия"></button>
+            <img class="popup__image" src="#" alt="">
+            <p class="popup__preview-title"></p>
         </div>
     </div>
 

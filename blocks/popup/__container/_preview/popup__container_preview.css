@@ -1,0 +1,14 @@
+.popup__container_preview {
+    background-color: transparent;
+    margin: 0 auto;
+    max-height: 75vh;
+    max-width: 75vw;
+    padding: 0;
+}
+
+@media screen and (max-width: 450px) {
+    .popup__container_preview {
+        height: 322px;
+        max-width: 240px;
+    }
+}
