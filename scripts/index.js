@@ -12,12 +12,9 @@ const profileName = document.querySelector('.profile__name')
 const profileJob = document.querySelector('.profile__subtitle');
 const nameInput = popupProfile.querySelector('.popup__input_type_name');
 const jobInput = popupProfile.querySelector('.popup__input_type_description');
-
 const cardInputLink = popupCard.querySelector('.popup__input_type_link');
 const cardInputName = popupCard.querySelector('.popup__input_type_title');
-const previewName =  popupPreview.querySelector('.popup__preview-title');
-
-
+const previewName = popupPreview.querySelector('.popup__preview-title');
 const formProfile = popupProfile.querySelector('.popup__form_type_edit-profile');
 const cardForm = popupCard.querySelector('.popup__form_type_add-card');
 const templateCard = cardsList.querySelector('.element-template');
@@ -87,7 +84,6 @@ function openPopupPreview(name, link) {
     previewPhoto.src = link
     previewPhoto.alt = name
     previewName.textContent = name;
-
     openPopup(popupPreview);
 }
 
