@@ -12,31 +12,36 @@ const profileName = document.querySelector('.profile__name')
 const profileJob = document.querySelector('.profile__subtitle');
 const nameInput = popupProfile.querySelector('.popup__input_type_name');
 const jobInput = popupProfile.querySelector('.popup__input_type_description');
+
+const cardInputLink = popupCard.querySelector('.popup__input_type_link');
+const cardInputName = popupCard.querySelector('.popup__input_type_title');
+const previewName =  popupPreview.querySelector('.popup__preview-title');
+
+
 const formProfile = popupProfile.querySelector('.popup__form_type_edit-profile');
 const cardForm = popupCard.querySelector('.popup__form_type_add-card');
-const template = cardsList.querySelector('.element-template');
-const previewClose = popupPreview.querySelector('.popup__close-button_preview');
+const templateCard = cardsList.querySelector('.element-template');
 const previewPhoto = popupPreview.querySelector('.popup__image')
 
 function createCard(name, link) {
-    const cardTemplate = template.content.querySelector('.element').cloneNode(true);
-    const card = cardTemplate.querySelector('.element__img');
-    card.src = link;
-    card.alt = name;
-    cardTemplate.querySelector('.element__title').textContent = name;
-    cardTemplate.querySelector('.element__like').addEventListener('click', like);
-    cardTemplate.querySelector('.element__remove').addEventListener('click', removeCard);
-    card.addEventListener('click', () => openPopupPreview(name, link));
-    return cardTemplate;
+    const newCard = templateCard.content.querySelector('.element').cloneNode(true);
+    const cardImg = newCard.querySelector('.element__img');
+    cardImg.src = link;
+    cardImg.alt = name;
+    newCard.querySelector('.element__title').textContent = name;
+    newCard.querySelector('.element__like').addEventListener('click', like);
+    newCard.querySelector('.element__remove').addEventListener('click', removeCard);
+    cardImg.addEventListener('click', () => openPopupPreview(name, link));
+    return newCard;
 }
 
-function renderCards(name, link) {
+function renderCard(name, link) {
     const cardElement = createCard(name, link);
     cardsList.prepend(cardElement)
 }
 
 initialCards.forEach(function (item) {
-    renderCards(item.name, item.link);
+    renderCard(item.name, item.link);
 })
 
 function like(event) {
@@ -48,16 +53,16 @@ function removeCard(event) {
     card.remove();
 }
 
-function cardFormSubmit(event) {
+function submitCardForm(event) {
     event.preventDefault();
-    const link = popupCard.querySelector('.popup__input_type_link').value;
-    const name = popupCard.querySelector('.popup__input_type_title').value;
-    renderCards(name, link)
+    const link = cardInputLink.value;
+    const name = cardInputName.value;
+    renderCard(name, link)
     cardForm.reset();
     closePopup(popupCard);
 }
 
-function profileFormSubmit(event) {
+function submitProfileForm(event) {
     event.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
@@ -70,28 +75,28 @@ function editProfile() {
     jobInput.value = profileJob.textContent;
 }
 
-function openPopup(popupName) {
-    popupName.classList.add('popup_opened');
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
 }
 
-function closePopup(popupName) {
-    popupName.classList.remove('popup_opened');
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
 }
 
 function openPopupPreview(name, link) {
     previewPhoto.src = link
     previewPhoto.alt = name
-    popupPreview.querySelector('.popup__preview-title').textContent = name;
+    previewName.textContent = name;
 
     openPopup(popupPreview);
 }
 
-popupCard.addEventListener('submit', cardFormSubmit);
-formProfile.addEventListener('submit', profileFormSubmit);
+popupCard.addEventListener('submit', submitCardForm);
+formProfile.addEventListener('submit', submitProfileForm);
 
 buttonOpenPopupProfile.addEventListener('click', editProfile);
 buttonOpenPopupCard.addEventListener('click', () => { openPopup(popupCard); });
 
 buttonClosePopupProfile.addEventListener('click', () => { closePopup(popupProfile) });
 buttonClosePopupCard.addEventListener('click', () => { closePopup(popupCard) });
-previewClose.addEventListener('click', () => { closePopup(popupPreview) });
+buttonClosePopupPreview.addEventListener('click', () => { closePopup(popupPreview) });
