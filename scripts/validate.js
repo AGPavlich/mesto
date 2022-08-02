@@ -1,47 +1,68 @@
 const formNew = {
-    form: '.popup__form[name="profile"]'
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
 }
+const showInputError = (formElement, inputElement, errorMessage) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.add(formNew.inputErrorClass);
+    errorElement.classList.add(formNew.errorClass);
+    errorElement.textContent = errorMessage;
+};
 
-function enableValidation(config) {
-    //1. Найти форму в документе
-    const form = document.querySelector(config.form);
-    //2. Установить слушатель сабмита.
-    form.addEventListener('submit', handleFormSubmit);
-    form.addEventListener('input',)
-}
+const hideInputError = (formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove(formNew.inputErrorClass);
+    errorElement.classList.remove(formNew.errorClass);
+    errorElement.textContent = '';
+};
 
-function handleFormSubmit(event) {
-    event.preventDefault();
-    // 1. Определить валидность
-    const form = event.currentTarget;
-    const isValid = form.checkValidity();
+const hasInvalidInput = (inputList) => {
+    return inputList.some(input => !input.validity.valid)
+};
 
-    //2. Вывести Алерт
-    if (isValid) {
-        alert('OK')
-        //3. Если форма валидна, то сбросить её.
-        form.resrt();
+const setEventListeners = (formElement) => {
+    const inputList = Array.from(formElement.querySelectorAll(formNew.inputSelector));
+    const buttonElement = formElement.querySelector(formNew.submitButtonSelector);
+    toggleButtonState(inputList, buttonElement);
+    inputList.forEach((inputElement) => {
+        inputElement.addEventListener('input', function () {
+            checkInputValidity(formElement, inputElement);
+            toggleButtonState(inputList, buttonElement);
+        });
+    });
+};
+
+const checkInputValidity = (formElement, inputElement) => {
+    if (!inputElement.validity.valid) {
+        showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
-        alert('errore')
+        hideInputError(formElement, inputElement);
     }
-}
+};
 
-function handleFormInput(event) {
-    const input = event.target;
-    const form = event.currentTarget;
+const toggleButtonState = (inputList, buttonElement) => {
+    if (hasInvalidInput(inputList)) {
+        buttonElement.setAttribute('disabled', true);
+        buttonElement.classList.add(formNew.inactiveButtonClass);
+    } else {
+        buttonElement.removeAttribute('disabled');
+        buttonElement.classList.remove(formNew.inactiveButtonClass);
+    }
+};
 
-    //1. Установить кастомные тексты ошибок.
+const enableValidation = (formElement) => {
+    const formList = Array.from(document.querySelectorAll(formElement.formSelector));
+    formList.forEach((formElement) => {
+        formElement.addEventListener('submit', function (evt) {
+            evt.preventDefault();
+        });
+        setEventListeners(formElement);
 
-    //2. Показать ошибки в контейнере под каждым полем.
-    //3. Включить или отключить кнопку отправки формы.
-}
-
-function setCustomError(input) {
-    const validity = input.validity;
-
-    input.setCustomValidity(''); 
-    
-}
-
+    });
+};
 
 enableValidation(formNew);
