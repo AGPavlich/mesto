@@ -49,33 +49,39 @@ function removeCard(event) {
     card.remove();
 }
 
-function submitCardForm(event) {
+function handleCardFormSubmit(event) {
     event.preventDefault();
+    const inputList = Array.from(cardForm.querySelectorAll('.popup__input'));
+    const buttonElement = cardForm.querySelector('.popup__button');
+
     const link = cardInputLink.value;
     const name = cardInputName.value;
     renderCard(name, link)
     cardForm.reset();
+    toggleButtonState(inputList, buttonElement)
     closePopup(popupCard);
 }
 
-function submitProfileForm(event) {
+function handleProfileFormSubmit(event) {
     event.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     closePopup(popupProfile);
 }
 
-function editProfile(event) {
-    const x = popupProfile.querySelector('.popup__input');
-    openPopup(popupProfile);
+function editProfile() {
+    openPopup(popupProfile);  
+    const inputList = Array.from(formProfile.querySelectorAll('.popup__input'));
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
+    hideInputErrors(formProfile, inputList)
 }
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closeEscape);
     document.addEventListener('mousedown', closeOverlayClick);
+
 }
 
 function closePopup(popup) {
@@ -105,10 +111,13 @@ function openPopupPreview(name, link) {
     openPopup(popupPreview);
 }
 
-popupCard.addEventListener('submit', submitCardForm);
-formProfile.addEventListener('submit', submitProfileForm);
+
+
+popupCard.addEventListener('submit', handleCardFormSubmit);
+formProfile.addEventListener('submit', handleProfileFormSubmit);
 buttonOpenPopupProfile.addEventListener('click', editProfile);
 buttonOpenPopupCard.addEventListener('click', () => { openPopup(popupCard); });
 buttonClosePopupProfile.addEventListener('click', () => { closePopup(popupProfile) });
 buttonClosePopupCard.addEventListener('click', () => { closePopup(popupCard) });
 buttonClosePopupPreview.addEventListener('click', () => { closePopup(popupPreview) });
+
