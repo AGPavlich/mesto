@@ -120,4 +120,3 @@ buttonOpenPopupCard.addEventListener('click', () => { openPopup(popupCard); });
 buttonClosePopupProfile.addEventListener('click', () => { closePopup(popupProfile) });
 buttonClosePopupCard.addEventListener('click', () => { closePopup(popupCard) });
 buttonClosePopupPreview.addEventListener('click', () => { closePopup(popupPreview) });
-
